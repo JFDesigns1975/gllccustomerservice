@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>GLLC APP</title>
     <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="calendar.css" />
     <script src="https://kit.fontawesome.com/6cfe640a08.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -14,7 +15,7 @@
         <div><img src="GLLC-LOGO 2020.jpg" alt="Logo"></div>
     </header>
 
-    <div style="text-align:center;background-color:white;color:#007450;margin-bottom:20px;margin-left:80px;margin-right:80px;">
+    <div style="text-align:center;background-color:white;color:#007450;font-size:1.2rem;margin-bottom:20px;margin-left:80px;margin-right:80px;">
         <p>Need to meet with one of our helpful associates? Pick your day and time and we will be there with a helping hand.</p>
     </div>
 
@@ -25,7 +26,28 @@
         <a href="Appointment.html"><button class="btn"><i class="fa fa-calendar-alt"></i></button></a>
     </div>
 
-    <div class="main-image"><img src="image2.jpg" alt="Logo"></div>
+    <div class="container">
+        <div class="calendar">
+            <div class="month">
+                <i class="fas fa-angle-left prev"></i>
+                <div class="date">
+                    <h1></h1>
+                    <p></p>
+                </div>
+                <i class="fas fa-angle-right next"></i>
+            </div>
+            <div class="weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="days"></div>
+        </div>
+    </div>
 
     <section class="about">
         <div>

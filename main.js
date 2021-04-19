@@ -1,50 +1,96 @@
-const api = {
-    key: "afaf9f8d48cff6cafd32e23220bcfdbf",
-    base: "https://api.openweathermap.org/data/2.5/"
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+        } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+    });
 }
+const date = new Date();
 
-const searchbox = document.querySelector('.search-box');
-searchbox.addEventListener('keypress', setQuery);
+const renderCalendar = () => {
+    date.setDate(1);
 
-function setQuery(evt) {
-    if (evt.keyCode == 13) {
-        getResults(searchbox.value);
+    const monthDays = document.querySelector(".days");
+
+    const lastDay = new Date(
+            date.getFullYear(),
+            date.getMonth() + 1,
+            0
+    ).getDate();
+
+    const prevLastDay = new Date(
+            date.getFullYear(),
+            date.getMonth(),
+            0
+    ).getDate();
+
+    const firstDayIndex = date.getDay();
+
+    const lastDayIndex = new Date(
+            date.getFullYear(),
+            date.getMonth() + 1,
+            0
+    ).getDay();
+
+    const nextDays = 7 - lastDayIndex - 1;
+
+    const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ];
+
+    document.querySelector(".date h1").innerHTML = months[date.getMonth()];
+
+    document.querySelector(".date p").innerHTML = new Date().toDateString();
+
+    let days = "";
+
+    for (let x = firstDayIndex; x > 0; x--) {
+        days += `<div class="prev-date">${prevLastDay - x + 1}</div>`;
     }
-}
 
-function getResults (query) {
-    fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
-        .then(weather => {
-            return weather.json();
-        }).then(displayResults);
-}
+    for (let i = 1; i <= lastDay; i++) {
+        if (
+                i === new Date().getDate() &&
+                date.getMonth() === new Date().getMonth()
+        ) {
+            days += `<div class="today">${i}</div>`;
+        } else {
+            days += `<div>${i}</div>`;
+        }
+    }
 
-function displayResults (weather) {
-    let city = document.querySelector('.location .city');
-    city.innerText = `${weather.name}, ${weather.sys.country}`;
+    for (let j = 1; j <= nextDays; j++) {
+        days += `<div class="next-date">${j}</div>`;
+        monthDays.innerHTML = days;
+    }
+};
 
-    let now = new Date();
-    let date = document.querySelector('.location .date');
-    date.innerText = dateBuilder(now);
+document.querySelector(".prev").addEventListener("click", () => {
+    date.setMonth(date.getMonth() - 1);
+    renderCalendar();
+});
 
-    let temp = document.querySelector('.current .temp');
-    temp.innerHTML = `${Math.round(weather.main.temp)}<span>°c</span>`;
+document.querySelector(".next").addEventListener("click", () => {
+    date.setMonth(date.getMonth() + 1);
+    renderCalendar();
+});
 
-    let weather_el = document.querySelector('.current .weather');
-    weather_el.innerText = weather.weather[0].main;
-
-    let hilow = document.querySelector('.hi-low');
-    hilow.innerText = `${Math.round(weather.main.temp_min)}°c / ${Math.round(weather.main.temp_max)}°c`;
-}
-
-function dateBuilder (d) {
-    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-    let day = days[d.getDay()];
-    let date = d.getDate();
-    let month = months[d.getMonth()];
-    let year = d.getFullYear();
-
-    return `${day} ${date} ${month} ${year}`;
-}
+renderCalendar();

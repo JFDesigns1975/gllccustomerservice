@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>GLLC APP</title>
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="contact.css" />
     <script src="https://kit.fontawesome.com/6cfe640a08.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -25,17 +25,34 @@
         <a href="Appointment.html"><button class="btn"><i class="fa fa-calendar-alt"></i></button></a>
     </div>
 
-    <div class="main-image"><img src="image2.jpg" alt="freshly cut lawn";"text-align:center;padding:20px;border-radius:25px 25px 25px 25px;">
-   
-        <p>810.938.4218</p>
-        <p>gllndcare@gmail.com</p>
-        
-    </div>
+    <main>
 
-    <section class="about">
-        <div>
+        <input type="text" autocomplete="off" class="text-field" placeholder="Name..." />
+
+        <input type="text" autocomplete="off" class="text-field" placeholder="Customer Number..." />
+
+        <input type="text" autocomplete="off" class="text-field" placeholder="Message..." />
+
+        <div class="buttons">
+            <div class="action_btn">
+                <form action="mailto:jfournier@greatlakeslandcare.com" method="POST" enctype="text/plain">
+                    <button name="submit" class="action_btn submit" type="submit" value="Send" onclick="function myFunction() {
+                        }
+                        myFunction()">Submit</button>
+                </form>
+                <div class="action_btn">
+                    <button name="submit" class="action_btn cancel" type="reset" value="Cancel" onclick="function myFunction2() {
+                }
+                myFunction2()">Cancel</button>
+                </div>
+                <div class="action_btn">
+                    <button name="submit" class="action_btn cancel" type="reset" value="Cancel" onclick="function myFunction2() {
+                }
+                myFunction2()">Call</button>
+                </div>
+            </div>
         </div>
-    </section>
+    </main>
 
 </div>
 <script src="main.js"></script>
