@@ -2,33 +2,32 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "montserrat", sans-serif;
 }
 
-html {
-    font-size: 100%;
+body {
+    font-family: 'montserrat', sans-serif;
+    background-image: none;
 }
 
 .calendar {
-    width: 45rem;
-    height: 52rem;
+    min-width: 400px;
+    height: 800px;
     background-color: #FFFFFF;
-    min-width: 25rem;
 }
 
 .month {
     width: 100%;
-    height: 12rem;
+    height: 192px;
     background-color: #007054;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2rem;
+    padding: 0 30px;
     text-align: center;
 }
 
 .month i {
-    font-size: 2.5rem;
+    font-size: 40px;
     cursor: pointer;
 }
 
@@ -40,39 +39,37 @@ html {
 }
 
 .month p {
-    font-size: 1.6rem;
+    font-size: 25.6px;
 }
 
 .weekdays {
-    width: 100%;
-    height: 5rem;
-    padding: 0 0.4rem;
+    max-width: 480px;
+    height: 80px;
+    padding: 0 6.4px;
     display: flex;
     align-items: center;
 }
 
 .weekdays div {
-    font-size: 1.5rem;
     font-weight: 400;
-    letter-spacing: 0.1rem;
-    width: calc(44.2rem / 7);
+    letter-spacing: 1.6px;
+    width: calc(450px / 7);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .days {
-    width: 100%;
+    max-width: 460px;
     display: flex;
     flex-wrap: wrap;
-    padding: 0.2rem;
+    padding: 0;
 }
 
 .days div {
-    font-size: 1.4rem;
-    margin: 0.3rem;
-    width: calc(40.2rem / 7);
-    height: 5rem;
+    margin: 0;
+    width: calc(455px / 7);
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,7 +78,7 @@ html {
 
 .days div:hover:not(.today) {
     background-color: #007054;
-    border: 0.2rem solid #03dca6;
+    border: 3.2px solid #03dca6;
     cursor: pointer;
 }
 
